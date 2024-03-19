@@ -28,15 +28,6 @@ APP.post('/data', (req, res) => {
 			res.status(500).json({ message: "Error saving QR code image" });
 		} else {
 			console.log("The QR code image has been saved!");
-			writeFile("url.txt", URL, (err) => {
-				if (err) {
-					console.error(err);
-					res.status(500).json({ message: "Error saving URL" });
-				} else {
-					console.log("The URL has been saved!");
-					res.json({ message: "Data sent successfully", imgUrl: "qr_image.png"});
-				}
-			});
 		}
 	});
 });
