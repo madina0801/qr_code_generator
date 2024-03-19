@@ -3,17 +3,22 @@
  <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
   <title>QR Code Generator</title>
  </head>
  <body>
-  <h1>QR Code Generator</h1>
-  <form id="form" action="">
-   <label for="url" id="urlLabel">Type in URL</label>
-   <input type="text" id="url" />
-   <button id="btn">Submit</button>
-  </form>
+  <h1 id="heading">QR Code Generator</h1>
+  <div id="form-container">
+   <form id="form" action="">
+    <label for="url" id="urlLabel">Type in URL</label>
+    <input type="text" id="url" />
+    <button id="btn">Submit</button>
+   </form>
+  </div>
 
-  <img id="qrCodeImg" src="" alt="QR Code Image" style="display: none" />
+  <div id="img-container" style="margin-top: 15px; text-align: center">
+   <img id="qrCodeImg" src="" alt="QR Code Image" style="display: none" />
+  </div>
   <script>
    const form = document.getElementById("form");
    const submitBtn = document.getElementById("btn");
@@ -45,7 +50,6 @@
      }
     }
    });
-
   </script>
  </body>
 </html>

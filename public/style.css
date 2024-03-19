@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Sen:wght@400..800&display=swap');
+
+body {
+	background-color: whitesmoke;
+	color: darkslategray;
+	font-family: "Sen", sans-serif;
+	font-style: normal;
+	text-align: center;
+	margin: 10% 0;
+}
+
+#heading {
+	margin-bottom: 40px;
+	font-size: 36px;
+}
+
+#form {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+#urlLabel {
+	margin-bottom: 15px;
+	font-weight: 600;
+	font-size: 24px;
+}
+
+#url {
+	margin-bottom: 15px;
+	width: 150px;
+	height: 20px;
+}
+
+#btn {
+	padding: 8px 15px;
+	border-radius: 10%;
+	font-family: "Sen", sans-serif;
+	border-color: darkslategray;
+	color: darkslategray;
+	background: transparent;
+}
+
+#btn:hover {
+	background: darkslategray;
+	color: whitesmoke;	
+}
+
+#img-container {
+	display: flex;
+	justify-content: center;
+}
