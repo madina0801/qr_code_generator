@@ -5,7 +5,6 @@
     "qr-image": "^3.2.0"
   },
   "name": "qr-code-generator",
-  "type": "module",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {

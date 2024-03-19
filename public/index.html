@@ -6,33 +6,46 @@
   <title>QR Code Generator</title>
  </head>
  <body>
-  <form action="">
+  <h1>QR Code Generator</h1>
+  <form id="form" action="">
    <label for="url" id="urlLabel">Type in URL</label>
    <input type="text" id="url" />
-   <button id="get">Submit</button>
+   <button id="btn">Submit</button>
   </form>
+
+  <img id="qrCodeImg" src="" alt="QR Code Image" style="display: none" />
   <script>
-   const submitBtn = document.getElementById("get");
+   const form = document.getElementById("form");
+   const submitBtn = document.getElementById("btn");
    const urlInput = document.getElementById("url");
+   const qrCodeImg = document.getElementById("qrCodeImg");
 
    const baseUrl = "http://localhost:3000/";
-   submitBtn.addEventListener("click", async function sendUrlInput(e) {
+
+   form.addEventListener("submit", async function generateQRCode(e) {
     e.preventDefault();
-    fetch(baseUrl + "data", {
-     method: "POST",
-     headers: {
-      "Content-Type": "application/json",
-     },
-     body: JSON.stringify({
-      userUrl: urlInput.value,
-     }),
-    })
-     .then((response) => response.json())
-     .then((data) => console.log(data))
-     .catch((error) => console.error("Error:", error));
+    const userUrl = urlInput.value.trim();
+    if (userUrl) {
+     try {
+      const response = await fetch(baseUrl + "data", {
+       method: "POST",
+       headers: {
+        "Content-Type": "application/json",
+       },
+       body: JSON.stringify({ userUrl }),
+      });
+      if (!response.ok) {
+       throw new Error("Failed to generate QR code");
+      }
+      const { qrImagePath } = await response.json();
+      qrCodeImg.src = baseUrl + qrImagePath;
+      qrCodeImg.style.display = "block";
+     } catch (error) {
+      console.error("Error:", error);
+     }
+    }
    });
 
-	 
   </script>
  </body>
 </html>
