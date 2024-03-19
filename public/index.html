@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QR Code Generator</title>
+ </head>
+ <body>
+  <form action="">
+   <label for="url" id="urlLabel">Type in URL</label>
+   <input type="text" id="url" />
+   <button id="get">Submit</button>
+  </form>
+  <script>
+   const submitBtn = document.getElementById("get");
+   const urlInput = document.getElementById("url");
+
+   const baseUrl = "http://localhost:3000/";
+   submitBtn.addEventListener("click", async function sendUrlInput(e) {
+    e.preventDefault();
+    fetch(baseUrl + "data", {
+     method: "POST",
+     headers: {
+      "Content-Type": "application/json",
+     },
+     body: JSON.stringify({
+      userUrl: urlInput.value,
+     }),
+    })
+     .then((response) => response.json())
+     .then((data) => console.log(data))
+     .catch((error) => console.error("Error:", error));
+   });
+
+	 
+  </script>
+ </body>
+</html>
